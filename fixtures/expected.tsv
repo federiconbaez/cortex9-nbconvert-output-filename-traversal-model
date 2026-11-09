@@ -1,0 +1,49 @@
+id	version	branch	name	warn	target	inside_root	inside_files_dir	label
+p01_dotdot_one	pre	METADATA	../evil.txt.png	0	/sandbox/build/evil.txt.png	1	0	ESCAPE_FILES_DIR
+p01_dotdot_one	post	METADATA	evil.txt.png	1	/sandbox/build/nb_files/evil.txt.png	1	1	INSIDE
+p02_dotdot_two	pre	METADATA	../../evil.txt.png	0	/sandbox/evil.txt.png	0	0	ESCAPE_ROOT
+p02_dotdot_two	post	METADATA	evil.txt.png	1	/sandbox/build/nb_files/evil.txt.png	1	1	INSIDE
+p03_absolute	pre	METADATA	/abs/x.png	0	/abs/x.png	0	0	ESCAPE_ROOT
+p03_absolute	post	METADATA	x.png	1	/sandbox/build/nb_files/x.png	1	1	INSIDE
+p04_mid_dotdot	pre	METADATA	a/../../x.png	0	/sandbox/build/x.png	1	0	ESCAPE_FILES_DIR
+p04_mid_dotdot	post	METADATA	x.png	1	/sandbox/build/nb_files/x.png	1	1	INSIDE
+p05_mid_dotdot_root	pre	METADATA	a/../../../x.png	0	/sandbox/x.png	0	0	ESCAPE_ROOT
+p05_mid_dotdot_root	post	METADATA	x.png	1	/sandbox/build/nb_files/x.png	1	1	INSIDE
+p06_ghsa_poc	pre	METADATA	../../../tmp/PWNED.png	0	/tmp/PWNED.png	0	0	ESCAPE_ROOT
+p06_ghsa_poc	post	METADATA	PWNED.png	1	/sandbox/build/nb_files/PWNED.png	1	1	INSIDE
+p07_difftest_abs	pre	METADATA	/tmp/evil.png	0	/tmp/evil.png	0	0	ESCAPE_ROOT
+p07_difftest_abs	post	METADATA	evil.png	1	/sandbox/build/nb_files/evil.png	1	1	INSIDE
+p08_difftest_dotdot	pre	METADATA	../../evil.png	0	/sandbox/evil.png	0	0	ESCAPE_ROOT
+p08_difftest_dotdot	post	METADATA	evil.png	1	/sandbox/build/nb_files/evil.png	1	1	INSIDE
+p09_difftest_empty_base	pre	METADATA	../../../tmp/.png	0	/tmp/.png	0	0	ESCAPE_ROOT
+p09_difftest_empty_base	post	SKIP		0		0	0	SKIP
+n01_plain	pre	METADATA	img.png	0	/sandbox/build/nb_files/img.png	1	1	INSIDE
+n01_plain	post	METADATA	img.png	0	/sandbox/build/nb_files/img.png	1	1	INSIDE
+n02_missing_key	pre	DEFAULT		0		0	0	DEFAULT
+n02_missing_key	post	DEFAULT		0		0	0	DEFAULT
+n03_empty_value	pre	DEFAULT		0		0	0	DEFAULT
+n03_empty_value	post	DEFAULT		0		0	0	DEFAULT
+n04_other_ext	pre	METADATA	report.pdf.png	0	/sandbox/build/nb_files/report.pdf.png	1	1	INSIDE
+n04_other_ext	post	METADATA	report.pdf.png	0	/sandbox/build/nb_files/report.pdf.png	1	1	INSIDE
+n05_difftest_subdir	pre	METADATA	sub/evil.png	0	/sandbox/build/nb_files/sub/evil.png	1	1	INSIDE
+n05_difftest_subdir	post	METADATA	evil.png	1	/sandbox/build/nb_files/evil.png	1	1	INSIDE
+a01_backslash_posix	pre	METADATA	..\..\evil.png	0	/sandbox/build/nb_files/..\..\evil.png	1	1	INSIDE
+a01_backslash_posix	post	METADATA	..\..\evil.png	0	/sandbox/build/nb_files/..\..\evil.png	1	1	INSIDE
+a02_dotdot_dot_ext	pre	METADATA	..	0	/sandbox/build	1	0	ESCAPE_FILES_DIR
+a02_dotdot_dot_ext	post	METADATA	..	0	/sandbox/build	1	0	ESCAPE_FILES_DIR
+a03_trailing_slash	pre	METADATA	foo/.png	0	/sandbox/build/nb_files/foo/.png	1	1	INSIDE
+a03_trailing_slash	post	SKIP		0		0	0	SKIP
+a04_double_slash	pre	METADATA	//etc/passwd.png	0	//etc/passwd.png	0	0	ESCAPE_ROOT
+a04_double_slash	post	METADATA	passwd.png	1	/sandbox/build/nb_files/passwd.png	1	1	INSIDE
+a05_single_dot	pre	METADATA	..png	0	/sandbox/build/nb_files/..png	1	1	INSIDE
+a05_single_dot	post	METADATA	..png	0	/sandbox/build/nb_files/..png	1	1	INSIDE
+a06_dotdot_basename	pre	METADATA	x/...png	0	/sandbox/build/nb_files/x/...png	1	1	INSIDE
+a06_dotdot_basename	post	METADATA	...png	1	/sandbox/build/nb_files/...png	1	1	INSIDE
+a07_deep	pre	METADATA	../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../x.png	0	/x.png	0	0	ESCAPE_ROOT
+a07_deep	post	METADATA	x.png	1	/sandbox/build/nb_files/x.png	1	1	INSIDE
+a08_only_dotdot	pre	METADATA	...png	0	/sandbox/build/nb_files/...png	1	1	INSIDE
+a08_only_dotdot	post	METADATA	...png	0	/sandbox/build/nb_files/...png	1	1	INSIDE
+a09_unicode_dots	pre	METADATA	‥/evil.png	0	/sandbox/build/nb_files/‥/evil.png	1	1	INSIDE
+a09_unicode_dots	post	METADATA	evil.png	1	/sandbox/build/nb_files/evil.png	1	1	INSIDE
+a10_slash_only	pre	METADATA	/.png	0	/.png	0	0	ESCAPE_ROOT
+a10_slash_only	post	SKIP		0		0	0	SKIP

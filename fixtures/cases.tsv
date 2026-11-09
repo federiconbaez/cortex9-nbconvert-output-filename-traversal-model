@@ -1,0 +1,26 @@
+# id	kind	metadata_filename	ext	output_files_dir	hand_pre	hand_post
+# Hand-derived labels. Build dir = /sandbox/build (symbolic). Tokens: @missing = no key, @empty = ''.
+p01_dotdot_one	pos	../evil.txt	.png	nb_files	ESCAPE_FILES_DIR	INSIDE
+p02_dotdot_two	pos	../../evil.txt	.png	nb_files	ESCAPE_ROOT	INSIDE
+p03_absolute	pos	/abs/x	.png	nb_files	ESCAPE_ROOT	INSIDE
+p04_mid_dotdot	pos	a/../../x	.png	nb_files	ESCAPE_FILES_DIR	INSIDE
+p05_mid_dotdot_root	pos	a/../../../x	.png	nb_files	ESCAPE_ROOT	INSIDE
+p06_ghsa_poc	pos	../../../tmp/PWNED.png	.png	nb_files	ESCAPE_ROOT	INSIDE
+p07_difftest_abs	pos	/tmp/evil.png	.png	nb_files	ESCAPE_ROOT	INSIDE
+p08_difftest_dotdot	pos	../../evil.png	.png	nb_files	ESCAPE_ROOT	INSIDE
+p09_difftest_empty_base	pos	../../../tmp/	.png	nb_files	ESCAPE_ROOT	SKIP
+n01_plain	neg	img.png	.png	nb_files	INSIDE	INSIDE
+n02_missing_key	neg	@missing	.png	nb_files	DEFAULT	DEFAULT
+n03_empty_value	neg	@empty	.png	nb_files	DEFAULT	DEFAULT
+n04_other_ext	neg	report.pdf	.png	nb_files	INSIDE	INSIDE
+n05_difftest_subdir	neg	sub/evil.png	.png	nb_files	INSIDE	INSIDE
+a01_backslash_posix	adv	..\..\evil	.png	nb_files	INSIDE	INSIDE
+a02_dotdot_dot_ext	adv	..	.	nb_files	ESCAPE_FILES_DIR	ESCAPE_FILES_DIR
+a03_trailing_slash	adv	foo/	.png	nb_files	INSIDE	SKIP
+a04_double_slash	adv	//etc/passwd	.png	nb_files	ESCAPE_ROOT	INSIDE
+a05_single_dot	adv	.	.png	nb_files	INSIDE	INSIDE
+a06_dotdot_basename	adv	x/..	.png	nb_files	INSIDE	INSIDE
+a07_deep	adv	../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../x	.png	nb_files	ESCAPE_ROOT	INSIDE
+a08_only_dotdot	adv	..	.png	nb_files	INSIDE	INSIDE
+a09_unicode_dots	adv	‥/evil	.png	nb_files	INSIDE	INSIDE
+a10_slash_only	adv	/	.png	nb_files	ESCAPE_ROOT	SKIP
